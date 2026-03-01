@@ -1,9 +1,9 @@
 // Ensure the DOM is fully loaded before attaching events
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // 1. Navigation scroll effect
     const navbar = document.querySelector('.navbar');
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileBtn && navLinks) {
         mobileBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            
+
             // Toggle hamburger icon to X
             const icon = mobileBtn.querySelector('i');
-            if(navLinks.classList.contains('active')) {
+            if (navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
             } else {
@@ -69,4 +69,27 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach(el => {
         observer.observe(el);
     });
+
+    // 4. Contact Form Mailto Handler
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('senderName').value;
+            const phone = document.getElementById('senderPhone').value;
+            const message = document.getElementById('senderMessage').value;
+
+            const subject = encodeURIComponent(`New Consultation Request from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\n\nMessage:\n${message}`);
+
+            // Trigger default email client with mailto schema
+            window.location.href = `mailto:manojgarg1999@gmail.com?subject=${subject}&body=${body}`;
+
+            // Reset the form after sending intent
+            setTimeout(() => {
+                contactForm.reset();
+            }, 1000);
+        });
+    }
 });
