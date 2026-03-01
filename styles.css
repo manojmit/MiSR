@@ -705,10 +705,12 @@ footer {
         left: 0;
         width: 100%;
         background: var(--bg-surface);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
         flex-direction: column;
         padding: 30px 20px;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .nav-links.active {
@@ -732,6 +734,26 @@ footer {
         display: block;
     }
 
+    /* Layout Adjustments */
+    .hero {
+        min-height: auto;
+        padding-top: 120px;
+        padding-bottom: 60px;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+    /* Typography Scaling */
+    .section-title h2 {
+        font-size: 2.2rem;
+    }
+
     .hero-text h1 {
         font-size: 2.6rem;
     }
@@ -740,8 +762,77 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .service-card {
+        padding: 30px 25px;
+    }
+
+    .services-grid {
+        gap: 20px;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
     .footer-content {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    h2,
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .hero-actions .btn-primary {
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    .hero-actions .phone-link {
+        margin-top: 10px;
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .trust-badge,
+    .stat-badge {
+        flex-direction: column;
+        text-align: center;
+        max-width: 100%;
+        padding: 20px;
+        align-items: center;
+    }
+
+    .trust-badge .badge-icon-wrap,
+    .stat-badge .badge-icon-wrap {
+        margin-bottom: 10px;
+    }
+
+    .glass-card {
+        padding: 20px 15px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .contact-form-container {
+        padding: 25px 15px;
     }
 }
